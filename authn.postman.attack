@@ -1,0 +1,14 @@
+@slow
+Feature: Evaluate responses to various protected endpoints.
+
+Background:
+  Given "curl" is installed
+
+Scenario Outline: Verify server responds correctly to various HTTP methods
+  When I launch a "curl" attack with:
+    """
+    curl -i -X <method> "<url>"
+    """
+  Then the output should match /401 Unauthorized/
+  Examples:
+[EXAMPLES]

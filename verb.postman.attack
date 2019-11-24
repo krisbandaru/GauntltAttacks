@@ -1,0 +1,15 @@
+@slow
+Feature: Evaluate responses to various HTTP methods.
+
+Background:
+  Given "curl" is installed
+
+Scenario Outline: Verify server responds correctly to various HTTP methods
+  When I launch a "curl" attack with:
+    """
+    curl -i -X <method> <url>
+    """
+  Then the output should contain "<response>"
+  Examples:
+    | method | url | response |
+[EXAMPLES]
